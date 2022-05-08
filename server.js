@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(helmet());
 app.use(compression());
 
-app.use(express.static('./view')); //This ensures local references to cs and js files work
+app.use(express.static('./view'));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/view/index.html');
@@ -34,22 +34,19 @@ const listener = app.listen(process.env.PORT || 8080, () => {
 });
 
 mongoose.connect(
-  process.env.MONGODB_URI,
-  {
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
-    replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
-  },
-  function (err) {
-    if (err) return console.log("Error: ", err);
-    console.log(
-      "MongoDB Connection -- Ready state is:",
-      mongoose.connection.readyState
-    );
-  }
+    process.env.MONGODB_URI,
+    {
+      useFindAndModify: false,
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+      replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+    },
+    (err) => {
+        if (err) return console.log("Error: ", err);
+        console.log("MongoDB Connection -- Ready state is:", mongoose.connection.readyState);
+    }
 );
 
 
