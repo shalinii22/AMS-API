@@ -1,0 +1,27 @@
+{
+  "name": "shalini_node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shalinii22/Airport-Management-System.git"
+  },
+  "author": "Shalini Mishra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shalinii22/Airport-Management-System/issues"
+  },
+  "homepage": "https://github.com/shalinii22/Airport-Management-System#readme",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.1",
+    "helmet": "^5.0.2",
+    "mongoose": "^6.3.2",
+    "multer": "^1.4.4"
+  }
+}
