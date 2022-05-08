@@ -7,9 +7,7 @@ const aircraftRoutes = require('./routes/aircraft');
 const runwayRoutes = require('./routes/runway');
 const userRoutes = require('./routes/user');
 require('dotenv').config();
-const path = require('path');
 const mongoose = require('mongoose');
-const router = express.Router();
 const app = express();
 
 app.use(express.json());
@@ -17,7 +15,7 @@ app.use(express.json());
 app.use(helmet());
 app.use(compression());
 
-app.use(express.static('./view'));
+app.use(express.static('./view')); //This ensures local references to cs and js files work
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/view/index.html');
@@ -35,19 +33,14 @@ const listener = app.listen(process.env.PORT || 8080, () => {
 
 mongoose.connect(
     process.env.MONGODB_URI,
-    {
-      useFindAndModify: false,
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
-      replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
-    },
+    // {
+    //     server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+    //     replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+    // },
     (err) => {
         if (err) return console.log("Error: ", err);
         console.log("MongoDB Connection -- Ready state is:", mongoose.connection.readyState);
     }
 );
-
 
 

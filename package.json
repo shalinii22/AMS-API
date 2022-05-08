@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "scripts": {
+"scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "engines": {
-    "node": "16.6.1"
   },
   "repository": {
     "type": "git",
@@ -18,6 +15,9 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/shalinii22/Airport-Management-System/issues"
+  },
+  "engines": {
+    "node": "16.6.1"
   },
   "homepage": "https://github.com/shalinii22/Airport-Management-System#readme",
   "dependencies": {
